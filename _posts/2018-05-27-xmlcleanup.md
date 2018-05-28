@@ -145,15 +145,14 @@ And this is how the whole piece of code looks:
 import re
 import os
 
-#define absolute path
+#define relative path
 input_path = os.path.relpath(".\\files")
 output_path = os.path.relpath(".\\res")
 
 input_filelist = os.listdir(".\\files")
 output_filelist = os.listdir(".\\res")
 
-#note to self
-#identify pattern(s) for articles
+#note to self: identify pattern(s) for articles
 #Pattern: <div3 type="article" n="4" org="uniform" sample="complete"> at the start of every article
 #regEx: <div3[^<]+article[^<]+>
 
