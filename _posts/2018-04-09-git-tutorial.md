@@ -30,4 +30,4 @@ Pull new data from the master branch.
 
 Here's the confirmation screenshot of the online tutorial:
 
-![GitTut](https://github.com/tshjortile/tshjortile.github.io/tree/master/assets/img/git.png?raw=true)
+![GitTut](/assets/img/git.png)
