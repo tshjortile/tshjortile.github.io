@@ -30,4 +30,4 @@ Pull new data from the master branch.
 
 Here's the confirmation screenshot of the online tutorial:
 
-![](../img/git.png).
+![](../assets/img/git.png)
