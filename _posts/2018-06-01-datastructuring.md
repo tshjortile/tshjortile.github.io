@@ -11,15 +11,18 @@ As we got our teacher's solution from last week and thought the assignment throu
 
 As far as I've learned so far, there is a gazillion of ways to do something. As it was explained to me, modifying the code we got last time as a solution is one of the easiest ways. So, I took the code our teacher gave us as a solution to our last assignment (my code almost worked, by the way!) and took a more thorough look at it.
 
+
 '''
 
-import re, os
 
-source = ".//files"
-target = ".//res"
+	import re, os	
 
-#create a list to save the extracted information
-theList = []
+	source = ".//files"
+	target = ".//res"
+
+	# create a list to save the extracted information
+	theList = []
+
 
 '''
 
@@ -29,39 +32,40 @@ As for most of the code, I more or less let it be until I got to the juicy parts
 
 '''
 
-lof = os.listdir(source)
 
-for file in lof:
-	if file.startswith("dltext"): # fileName test		
-		with open(source + "/" + file, "r", encoding="utf8") as newFile:
-			text = newFile.read()
+	lof = os.listdir(source)
 
-			# try to find the date
-			date = re.search(r'<date value="([\d-]+)"', text).group(1)
+	for file in lof:
+		if file.startswith("dltext"): # fileName test		
+			with open(source + "/" + file, "r", encoding="utf8") as newFile:
+				text = newFile.read()
 
-			# splitting the issue into articles/items
-			split = re.split("<div3 ", text)
+				# try to find the date
+				date = re.search(r'<date value="([\d-]+)"', text).group(1)
 
-			c = 0 # item counter
-			#loop through the split documents
-			for s in split[1:]:
-				c += 1
-				s = "<div3 " + s # a step to restore the integrity of items
-				#input(s)
+				# splitting the issue into articles/items
+				split = re.split("<div3 ", text)
 
-				# try to find a unitType
-				try:
-					unitType = re.search(r'type="([^\"]+)"', s).group(1)
-				except:
-					unitType = "noType"
-					print(s)
+				c = 0 # item counter
+				#loop through the split documents
+				for s in split[1:]:
+					c += 1
+					s = "<div3 " + s # a step to restore the integrity of items
+					#input(s)
 
-				# try to find a header
-				try:
-					header = re.search(r'<head>(.*)</head>', s).group(1)
-					header = re.sub("<[^<]+>", "", header)
-				except:
-					header = "NO HEADER"
+					# try to find a unitType
+					try:
+						unitType = re.search(r'type="([^\"]+)"', s).group(1)
+					except:
+						unitType = "noType"
+						print(s)
+
+					# try to find a header
+					try:
+						header = re.search(r'<head>(.*)</head>', s).group(1)
+						header = re.sub("<[^<]+>", "", header)
+					except:
+						header = "NO HEADER"
 
 
 '''
@@ -74,27 +78,28 @@ As our teacher already generated an ID, I just had to delete the "#itemID"-tag h
 
 
 '''
+
 					
-				#replace xml markup with blank spaces
-				text = re.sub("<[^<]+>", "", s)
-				text = re.sub(" +\n|\n +", "\n", text)
-				text = re.sub("\n+", "", text)
+					#replace xml markup with blank spaces
+					text = re.sub("<[^<]+>", "", s)
+					text = re.sub(" +\n|\n +", "\n", text)
+					text = re.sub("\n+", "", text)
 
-				#generate itemID
-				itemID = date+"_"+unitType+"_"+str(c)
+					#generate itemID
+					itemID = date+"_"+unitType+"_"+str(c)
 		
-				# creating a text variable
-				var = "\t".join([itemID,date,unitType,header,text])+"\n"
+					# creating a text variable
+					var = "\t".join([itemID,date,unitType,header,text])+"\n"
 
-				#input(var)
+					#input(var)
 				
-				#append var to list
-				theList.append(var)
+					#append var to list
+					theList.append(var)
 
-# saving each line of the list to the new file (as it doesn't accept lists, but only strings)
-with open(target+"/"+"result"+".tsv", "w", encoding="utf8") as tsvFile:
-	for line in theList:
-		tsvFile.write(line)
+	# saving each line of the list to the new file (as it doesn't accept lists, but only strings)
+	with open(target+"/"+"result"+".tsv", "w", encoding="utf8") as tsvFile:
+		for line in theList:
+			tsvFile.write(line)
 		
 '''
 
