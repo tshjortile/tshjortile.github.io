@@ -14,7 +14,7 @@ As was explained to us in class, modifying the code we got last time in order to
 So, I took the code our teacher gave us as a solution to our last assignment (my code almost worked, by the way!) and took a more thorough look at it.
 
 
-'''
+```
 
 
 	import re, os	
@@ -26,15 +26,13 @@ So, I took the code our teacher gave us as a solution to our last assignment (my
 	theList = []
 
 
-'''
+```
 
 
 The first thing I found in my notes was that we should work either with a dictionary or a list if we want to have a list as an output. I decided a list was easier for me to handle as I still feel quite unsure about what I'm doing.
 As for most of the code, I could more or less let it be. The functions to search, split and replace work; they do what they are supposed to do and don't have to be messed with.
 Our teacher even added something that filters the unitType as well as the header out of the text, which is great. Also, these bits of code didn't have to be changed at all.
-
-'''
-
+```
 
 	lof = os.listdir(source)
 
@@ -71,8 +69,7 @@ Our teacher even added something that filters the unitType as well as the header
 						header = "NO HEADER"
 
 
-'''
-
+```
 
 While our teacher let the program print "no header found" if there was no header, I found that very annoying after running the code a few times. It also slowed down the whole process, so I commented it out to see what happened if it wasn't there. After I saw that the code was faster and I didn't take out anything essential with it, I deleted this line of code.
 Another thing I deleted out is the line of code that generated a new file for each entry. As we're collecting everything in a list, this line is not needed.
@@ -80,7 +77,7 @@ I only made small modifications to the replace-function: While our teacher inser
 As our teacher already generated an ID, I just had to delete the "#itemID"-tag he had inserted before. I also decided that it made not much sense to use tags to mark different parts of one entry anymore. These parts (date, unitType, header, text) are already defined in the code and don't need further tagging.
 
 
-'''
+```
 
 					
 					#replace xml markup with blank spaces
@@ -104,7 +101,7 @@ As our teacher already generated an ID, I just had to delete the "#itemID"-tag h
 		for line in theList:
 			tsvFile.write(line)
 		
-'''
+```
 
 My one problem I encountered was to find a solution to saving my list (theList) in a file (tsvfile). I didn't come up with this solution by myself, but got a hint by an IT-guy-friend who laughed at me for not figuring it out myself. As the open-function doesn't accept lists, I had to find a way to write every line separately into the document.
 As it turns out, the write-function accepts the single lines of the list.
