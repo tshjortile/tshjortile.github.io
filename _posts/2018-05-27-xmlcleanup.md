@@ -23,7 +23,8 @@ In order to specify a path, I needed the import os function so I could set it.
 In order to get the files, I needed the os.listdir function. I printed the files there after, to test the function, but deleted it to declutter my code.
 
 
-'''
+´´´
+
 
 	import re
 	import os
@@ -36,25 +37,24 @@ In order to get the files, I needed the os.listdir function. I printed the files
 	output_filelist = os.listdir(".\\res")
 
 
-'''
+´´´
 
 #4)
 Then I looked at the xml-Files and looked for the xml-tag of the articles. The pattern is <div3 type="article" n="4" org="uniform" sample="complete"> at the start of every article. The end of an article is marked with </dir3>.
 My regular expression for it looks like this:
 
-'''
+´´´
 
 	div3[^<]+article[^<]+>
 
-'''
+´´´
 
 *Yes, I really put it in my code as note to self, since it was one of the first things I tried to figure out here. (I usually try to do something I know I can do. This was it here.)*
 
 #5)
 We got a function to open and save documents. I implemented it and had to figure out where to put the variables.
 
-
-'''
+´´´
 
 	for fileName in input_filelist:
 		with open(".\\files\\" + fileName, 'r', encoding="utf8") as file_in:
@@ -64,7 +64,7 @@ We got a function to open and save documents. I implemented it and had to figure
 			file_out.write(text)
 	
 
-'''
+´´´
 
 Since I work with two different subfolders, I had to add the relative path to tell the programme where it should put my new file.
 
@@ -72,7 +72,7 @@ Since I work with two different subfolders, I had to add the relative path to te
 First, I looked at how to change the file's naming. Luckily, we got a code for this as well!
 
 
-'''
+´´´
 
 	for fileName in input_filelist:
 		with open(".\\files\\" + fileName, 'r', encoding="utf8") as file_in:
@@ -89,7 +89,7 @@ First, I looked at how to change the file's naming. Luckily, we got a code for t
 			file_out.write(text)
 	
 
-'''
+´´´
 
 
 My thought: Since I have to name quite a lot of articles, the proposition for the naming of the new file ("_modified.xml"), would not be enough.
@@ -99,7 +99,7 @@ I decided that a numerus currens was better. (It took me a while to figure out t
 I still had to split the files, though. We got another chunk of code for that, thanks to our teacher.
 
 
-'''
+´´´
 
 		for fileName in input_filelist:
 			with open(".\\files\\" + fileName, 'r', encoding="utf8") as file_in:
@@ -119,14 +119,14 @@ I still had to split the files, though. We got another chunk of code for that, t
 			file_out.write(text)
 
 
-'''	
+´´´
 
 #8)
 I ran the code again, checked the "res" folder, and there they were: All the articles, neatly split.
 But I still had to clean them from the xml markup. I did this by inserting the piece of code we got from our teacher into the loop.
 
 
-'''
+´´´
 
 	for fileName in input_filelist:
 		with open(".\\files\\" + fileName, 'r', encoding="utf8") as file_in:
@@ -147,7 +147,7 @@ But I still had to clean them from the xml markup. I did this by inserting the p
 		with open(".\\res\\" + newfile, 'w', encoding="utf8") as file_out:
 			file_out.write(text)
 
-'''
+´´´
 
 And then, it worked!
 
@@ -161,7 +161,7 @@ Things I learned from doing this assignment:
 And this is how the whole piece of code looks:
 
 
-'''
+´´´
 
 	import re
 	import os
@@ -197,4 +197,4 @@ And this is how the whole piece of code looks:
 			file_out.write(text)
 
 	
-'''
+´´´

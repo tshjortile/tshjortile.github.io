@@ -6,7 +6,8 @@ title: Git - Notes and Tutorial Screenshot
 The next assignment was the completion of codeacademy's git tutorial.
 
 Things I will often need and that are important to know:
-'''
+´´´
+
 git clone <path>
 With this function one can import a git repository to one's computer.
 
@@ -25,7 +26,7 @@ push this to the branch you're working on. It synchs, then a pull request can be
 git pull
 Pull new data from the master branch.
 
-'''
+´´´
 
 
 Here's the confirmation screenshot of the online tutorial:
