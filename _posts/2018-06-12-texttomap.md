@@ -15,68 +15,70 @@ As we already got a solution for this assignment from our teacher, I still want 
 It's impractical and there are better solutions, but still: one version in order to solve the problem.
 
 ´´´
-import re, os
 
-source = ".//files"
-target = ".//res"
+		import re, os
 
-source1 = ".//US.txt"
+		source = ".//files"
+		target = ".//res"
 
-#create a list to save the extracted information
-placeList = []
+		source1 = ".//US.txt"
 
-lof = os.listdir(source)
-lof.sort()
+		#create a list to save the extracted information
+		placeList = []
 
-for file in lof:
-	if file.startswith("dltext"): # fileName test
-		with open(source + "/" + file, "r", encoding="utf8") as geoFile:
-			text = geoFile.read()
+		lof = os.listdir(source)
+		lof.sort()
 
-			#set time parameter --> later on!
-			# date = re.search(r'<date value="([\d-]+)"', text).group(1)
-			
-			split = re.split('<div3', text)
-			for s in split[1:]:
-				s = "<div3" + s # a step to restore the integrity of items
-				#input(s)
-				if 'type="article"' in s:
-					places = re.findall(r'<placeName[^/]*', s, flags=0) # find complete placename-markups
-					for place in places:
-						placeID = re.findall(r'key="tgn,([0-9]*)"', place, flags=0) #find tgn ID
-						placename = re.findall(r'reg="([^\"]+)"', place, flags=0) #filter placename for regularized form
-						# print(places) #testing				
-						if len(placeID) == 1 and len(placename) == 1:
-							for x in range(len(placeID)):
-								var = "\t".join([placename[x], placeID[x]])
-								placeList.append(var) #append results to placeList
+		for file in lof:
+			if file.startswith("dltext"): # fileName test
+				with open(source + "/" + file, "r", encoding="utf8") as geoFile:
+					text = geoFile.read()
 
-							# print(placeList)
-						
-					dicFreq = {} #frequency dictionary
-			
-					for i in placeList:
-						if i in dicFreq:
-							dicFreq[i] += 1
-						else:
-							dicFreq[i]  = 1
-						
-					resultsTSV = []
+					#set time parameter --> later on!
+					# date = re.search(r'<date value="([\d-]+)"', text).group(1)
 					
-					for key, value in dicFreq.items():
-						if value > 1: # this will exclude items with frequency 1
-							newVal = "%09d\t%s" % (value, key)
-							resultsTSV.append(newVal)
+					split = re.split('<div3', text)
+					for s in split[1:]:
+						s = "<div3" + s # a step to restore the integrity of items
+						#input(s)
+						if 'type="article"' in s:
+							places = re.findall(r'<placeName[^/]*', s, flags=0) # find complete placename-markups
+							for place in places:
+								placeID = re.findall(r'key="tgn,([0-9]*)"', place, flags=0) #find tgn ID
+								placename = re.findall(r'reg="([^\"]+)"', place, flags=0) #filter placename for regularized form
+								# print(places) #testing				
+								if len(placeID) == 1 and len(placename) == 1:
+									for x in range(len(placeID)):
+										var = "\t".join([placename[x], placeID[x]])
+										placeList.append(var) #append results to placeList
 
-					resultsTSV = sorted(resultsTSV, reverse=True)
-					#print(len(resultsTSV)) # will print out the number of items in the list
-					resultsToSave = "\n".join(resultsTSV)
+									# print(placeList)
+								
+							dicFreq = {} #frequency dictionary
+					
+							for i in placeList:
+								if i in dicFreq:
+									dicFreq[i] += 1
+								else:
+									dicFreq[i]  = 1
+								
+							resultsTSV = []
+							
+							for key, value in dicFreq.items():
+								if value > 1: # this will exclude items with frequency 1
+									newVal = "%09d\t%s" % (value, key)
+									resultsTSV.append(newVal)
 
-					# print(resultsToSave) #testing
-						
-					with open(target + "/" + "result" + ".tsv", "w", encoding="utf8") as tsvFile:
-						for line in resultsToSave:
-							tsvFile.write(line)
+							resultsTSV = sorted(resultsTSV, reverse=True)
+							#print(len(resultsTSV)) # will print out the number of items in the list
+							resultsToSave = "\n".join(resultsTSV)
+
+							# print(resultsToSave) #testing
+								
+							with open(target + "/" + "result" + ".tsv", "w", encoding="utf8") as tsvFile:
+								for line in resultsToSave:
+									tsvFile.write(line)
+
 ´´´
 
 Now, the solution our teacher gave us of course looks more elegant:

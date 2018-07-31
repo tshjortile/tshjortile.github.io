@@ -13,3 +13,5 @@ To georeference a map with QGIS (either 2.8 or 3.0 or 3.2) is quite easy and can
 5. After one is finished, just click the play button in the new window (twice in the older version).
 
 The layer should appear now in QGIS.
+
+![georef](/assets/img/georef.png)
