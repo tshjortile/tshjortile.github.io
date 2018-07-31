@@ -14,7 +14,7 @@ The next assignment was broken down into two parts, because it took a bit longer
 As we already got a solution for this assignment from our teacher, I still want to share my take on the first part, because a) I still have a hard time completely using dictionaries without having problems, and b) because I spent quite a lot of time writing the code.
 It's impractical and there are better solutions, but still: one version in order to solve the problem.
 
-´´´
+```
 
 		import re, os
 
@@ -79,7 +79,7 @@ It's impractical and there are better solutions, but still: one version in order
 								for line in resultsToSave:
 									tsvFile.write(line)
 
-´´´
+```
 
 Now, the solution our teacher gave us of course looks more elegant:
 
