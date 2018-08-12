@@ -9,7 +9,6 @@ Either one gets it, or one doesn't. I feel like I'm starting to get how they wor
 We had practice assignments, here are the solutions to them:
 
 ```
-
 Solution for Part I, 3:
 
 \b[IEShH][s?ie][bpfs]p?[aa](ha?a?n)|nesf-e jahan\b

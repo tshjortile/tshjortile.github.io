@@ -12,14 +12,14 @@ As we got pieces of python code for the assignment, the most complicated part fo
 
 My thought process, roughly:
 
-#1)
+1)
 I have to use regular expressions, I should import them.
 
-#2)
+2)
 Also, I need to set the path where I want to take the files from ("files") and where I want them to go once I'm finished with them (directory "res" for results).
 In order to specify a path, I needed the import os function so I could set it.
 
-#3)
+3)
 In order to get the files, I needed the os.listdir function. I printed the files there after, to test the function, but deleted it to declutter my code.
 
 
@@ -37,7 +37,7 @@ output_filelist = os.listdir(".\\res")
 
 ```
 
-#4)
+4)
 Then I looked at the xml-Files and looked for the xml-tag of the articles. The pattern is <div3 type="article" n="4" org="uniform" sample="complete"> at the start of every article. The end of an article is marked with </dir3>.
 My regular expression for it looks like this:
 
@@ -47,24 +47,11 @@ My regular expression for it looks like this:
 
 ```
 
-*Yes, I really put it in my code as note to self, since it was one of the first things I tried to figure out here. (I usually try to do something I know I can do. This was it here.)*
+I put it in my code as note to self, since it was one of the first things I tried to figure out here. (I usually try to do something I know I can do. This was it here.)*
 
-#5)
+5)
 We got a function to open and save documents. I implemented it and had to figure out where to put the variables.
-
-```python
-
-for fileName in input_filelist:
-	with open(".\\files\\" + fileName, 'r', encoding="utf8") as file_in:
-		data = file_in.read()
-
-	with open(".\\res\\" + newfile, 'w', encoding="utf8") as file_out:
-		file_out.write(text)
-
-
-```
-
-Since I work with two different subfolders, I had to add the relative path to tell the programme where it should put my new file.
+Since I work with two different subfolders, I had to add the relative path to each to tell the programme where it should put my new file.
 
 #6)
 First, I looked at how to change the file's naming. Luckily, we got a code for this as well!
@@ -146,7 +133,7 @@ Things I learned from doing this assignment:
 --> help is great! I asked an IT guy for his opinion once I was done with my first attemt at coding this; he gave me a lot of useful advice
 --> the internet is your friend, once you know how to phrase your questions: I had to try a few attempts until I got where I wanted to get.
 
-And this is how the whole piece of code looks:
+And this is how the whole code looks:
 
 
 ```python
