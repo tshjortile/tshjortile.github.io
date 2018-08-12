@@ -13,40 +13,35 @@ In order to webscrape the Dispatch, we need to create a list of links. This can 
 
 Step 1: right-click in order to view the site's source code and extract the links with the following regEx:
 
-
-´´´
-
+```
 href="text(.*)"
-
-
-´´´
+```
 
 With step 1, we get partial links. These have to be saved to a *.txt-document.
 To these e have to add a bit in order to be able to download the xml-files.
 The links look like this:
 
-´´´
+```
 
 href="text?doc=Perseus%3atext%3a2006.05.0009"
 
-
-´´´
+```
 
 The url to the xml-files look almost the same, we just have to replace the first part (href="text?) with the beginning of the xml-file-url:
 
 
-´´´
+```
 www.perseus.tufts.edu/hopper/dltext?
 
-´´´
+```
 
 After removing the quotation marks at the end of the links, the list is ready for the webscraping.
 For this, we need wget. I typed in the following commands to my powershell:
 
-´´´
+```
 wget -i links.txt -P -nc ./subfolder/
 
-´´´
+```
 
 -P is a folder parameter; it instructs wget where to save the files to.
 -nc is a parameter that instructs wget to skip files that are already there;
